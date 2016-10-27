@@ -18,5 +18,5 @@
     },
     "dependencies": {
         "vue-hot-reload-api": "2.0.6"
-    },
+    }
 }
