@@ -36,15 +36,6 @@ module.exports = function(babel) {
                                     t.expressionStatement(
                                         t.callExpression(
                                             t.memberExpression(
-                                                t.identifier('console'),
-                                                t.identifier('log')
-                                            ),
-                                            [t.stringLiteral(component)]
-                                        )
-                                    ),
-                                    t.expressionStatement(
-                                        t.callExpression(
-                                            t.memberExpression(
                                                 t.memberExpression(
                                                     t.identifier('module'), t.identifier('hot')
                                                 ),
