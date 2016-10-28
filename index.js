@@ -3,7 +3,7 @@ var component = '';
 
 var jsxVisitor = {
     JSXElement: {
-        enter (path, file) {
+        enter (path) {
             jsx = true;
         }
     }
@@ -11,7 +11,7 @@ var jsxVisitor = {
 
 var objectExpressionVisitor = {
     ObjectMethod: {
-        enter (path, file) {
+        enter (path) {
             if (path.node.key.name === 'render') {
                 path.traverse(jsxVisitor);
             }
@@ -24,7 +24,7 @@ module.exports = function(babel) {
     return {
         visitor: {
             Program: {
-                exit (path, file) {
+                exit (path) {
                     if (component !== '') {
                         path.node.body.push(
                             t.ifStatement(
@@ -148,11 +148,14 @@ module.exports = function(babel) {
                 }
             },
             VariableDeclarator: {
-                enter (path, file) {
+                enter (path, state) {
                     path.traverse(objectExpressionVisitor);
                     if (jsx) {
                         component = path.node.id.name;
                         jsx = false;
+                        if (state.opts.debug) {
+                            console.log('Found JSX Component: ', component);
+                        }
                     }
                 }
             }
