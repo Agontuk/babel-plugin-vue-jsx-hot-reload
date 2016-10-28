@@ -1,6 +1,6 @@
 {
     "main": "index.js",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "name": "babel-plugin-vue-jsx-hot-reload",
     "description": "Babel plugin for hot reloading Vue 2.0 JSX component",
     "license": "MIT",
