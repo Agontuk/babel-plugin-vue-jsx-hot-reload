@@ -1,7 +1,7 @@
 # babel-plugin-vue-jsx-hot-reload
 Babel plugin for hot reloading Vue 2.0 JSX component.
 
-> This plugin only works with Vue 2.0 JSX and it's in very early stage.
+> This plugin only works with Vue 2.0 JSX and it's in very early stage. Use this for development only.
 
 ## Installation
 ```shell
@@ -13,7 +13,9 @@ In your `.babelrc`:
 
 ``` json
 {
-  "plugins": ["vue-jsx-hot-reload"]
+  "plugins": [
+        ["vue-jsx-hot-reload", { "debug": false }]
+    ]
 }
 ```
 
@@ -30,6 +32,11 @@ const Component = {
 };
 
 export default Component;
+// That's it !!
 ```
+
+## Options
+Setting `debug: true` will log the JSX component name in terminal
+
 ## License
 MIT
